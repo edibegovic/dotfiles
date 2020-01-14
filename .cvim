@@ -1,0 +1,28 @@
+set smoothscroll
+let scrollduration = 400
+let scrollstep = 260
+map m previousTab
+map , nextTab
+map k scrollUp
+map j scrollDown
+map J goBack
+map K goForward
+map ' /
+map r /
+map u gi
+map i >
+map M <
+map h previousTab
+map l nextTab
+map H <
+map L >
+map i x
+map I X
+map ; >
+map <down> <tab>
+set noautofocus
+let searchengine Ordbogen = "https://www.ordbogen.com/opslag.php?dict=auto&word=%s"
+let searchengine Sprogbro = "https://sprogbro.org/soeg?q=%s"
+let completionengines = ["google", "Ordbogen", "Sprogbro"]
+let hintcharacters = "jkluio"
+let blacklists = ["*://paperspace.com*"]
