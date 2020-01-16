@@ -1,0 +1,21 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "shift+enter",
+        "command": "vscode-postgres.runQuery",
+        "when": "editorLangId == 'postgres'"
+    },
+    {
+        "key": "f5",
+        "command": "-vscode-postgres.runQuery",
+        "when": "editorLangId == 'postgres'"
+    }
+]

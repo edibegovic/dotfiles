@@ -1,0 +1,89 @@
+{
+"workbench.colorTheme": "Atom One Dark",
+"tabout.disableByDefault": true,
+"vim.useSystemClipboard": true,
+"window.zoomLevel": 0,
+"vim.leader": "<space>",
+"vim.sneak": true,
+"vim.easymotion": true,
+"vim.ignorecase": true,
+"vim.sneakUseIgnorecaseAndSmartcase": true,
+"vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["¨"],
+        "after": ["/"]
+    },
+    {
+        "before": ["'"],
+        "after": ["`"]
+    },
+    {
+        "before": ["J"],
+        "after": ["}"]
+    },
+    {
+        "before": ["K"],
+        "after": ["{"]
+    },
+    {
+        "before": ["H"],
+            "after": ["_"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["D"],
+            "after": ["d","d"]
+        },
+        {
+            "before": ["d","d"],
+            "after": ["D"]
+        },
+        {
+            "before": [","],
+            "after": [";"]
+        },
+        {
+            "before": [";"],
+            "after": [","]
+        },
+        {
+            "before": ["s"],
+            "commands": ["editor.action.commentLine"]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["J"],
+            "after": ["}"]
+        },
+        {
+            "before": ["K"],
+            "after": ["{"]
+        },
+        {
+            "before": ["H"],
+            "after": ["_"]
+        },
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["."],
+            "commands": [":normal .<CR>"]
+        },
+        {
+            "before": ["s"],
+            "commands": ["editor.action.commentLine"]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "breadcrumbs.enabled": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "python.dataScience.sendSelectionToInteractiveWindow": true,
+}
