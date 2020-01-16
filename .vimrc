@@ -7,6 +7,7 @@ let mapleader = "\<Space>"
 " ~~~aestethics~~~ 
 set background=dark
 colorscheme gruvbox
+" set termguicolors " Enable true colors support
 
 call plug#begin()
 Plug 'morhetz/gruvbox' " Primary color scheme
@@ -26,7 +27,15 @@ Plug 'tmsvg/pear-tree' " Auto-close breackets
 Plug 'deathlyfrantic/vim-buftabline', { 'branch': 'experimental-config-function' }
 Plug 'jpalardy/vim-slime',
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
+Plug 'romainl/vim-cool' " Stop matching after search is done.
+Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
 call plug#end()
+
+" Indentation
+set smartindent
+
+" improved search
+map /  <Plug>(incsearch-forward)
 
 " Select all occurances of word under cursor (multi-cursor)
 let multi_cursor_select_all_word_key = '<C-#>'
@@ -296,6 +305,7 @@ nnoremap Q <nop>
 
 " Yank selection to system clipboard
 noremap <Leader>y "*y
+noremap Y V"*y
 
 set fillchars=vert:┃ " for vsplits
 set fillchars+=fold:· "for folds
