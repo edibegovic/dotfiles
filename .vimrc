@@ -1,3 +1,4 @@
+
 " Reload eonfiguration with :so %
 
 " Set leader to <space>
@@ -5,8 +6,8 @@ nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
 
 " ~~~aestethics~~~ 
-set background=dark
 colorscheme gruvbox
+set background=dark
 " set termguicolors " Enable true colors support
 
 call plug#begin()
@@ -21,25 +22,33 @@ Plug 'briandoll/change-inside-surroundings.vim' " Common 'change in <surrounding
 Plug 'machakann/vim-highlightedyank' " Highlight yanked region
 Plug '/usr/local/opt/fzf' " FZF fuzzy finder
 Plug 'junegunn/fzf.vim' " Vim functionality to FZF
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} " Auto-completion
 Plug 'edix0009/vim-sayonara' " Quit vim when last buffer is closed
 Plug 'tmsvg/pear-tree' " Auto-close breackets
 Plug 'deathlyfrantic/vim-buftabline', { 'branch': 'experimental-config-function' }
-Plug 'jpalardy/vim-slime',
+Plug 'jpalardy/vim-slime', { 'for': 'python' }
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 Plug 'romainl/vim-cool' " Stop matching after search is done.
 Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
+Plug 'psliwka/vim-smoothie'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mg979/vim-visual-multi' " multiple cursors
+Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+
+" Center screen around current cursor position
+noremap Z zz
 
 " Indentation
 set smartindent
 
+" Rename current TMUX tab to current file
+autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+set title
+
 " improved search
 map /  <Plug>(incsearch-forward)
-
-" Select all occurances of word under cursor (multi-cursor)
-let multi_cursor_select_all_word_key = '<C-#>'
-map <leader>n <C-#>
 
 map <c-b> ``
 noremap gb ``
@@ -75,16 +84,9 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" FZF should use dropbox as main index
-map <c-space> :FZF ~/Dropbox<cr>
-map <c-f> :Files <C-R>=expand('%:h')<CR><CR>
-
-
-" More FZF shortcuts
-nnoremap <silent> <leader>o :Files<cr>
-nnoremap <silent> <leader>b :Buffers<cr>
-nnoremap <silent> <leader>h :History<cr>
-nnoremap <silent> <leader>c :Commands<cr>
+" FZF should use dropbox as main inoREDIRECT_URIex
+map <c-space> :FZF<cr>
+" map <c-f> :Files <C-R>=expand('%:h')<CR><CR>
 
 "use J/K to more between paragraphs
 nnoremap K k{<Space>0
@@ -98,10 +100,6 @@ noremap gj gJ
 " Select all
 noremap <leader>a ggVG
 
-" repat with leader r or ø
-map <leader>r .
-map ø .
-
 " Go to mark exact position instead of line
 noremap ' `
 
@@ -110,19 +108,11 @@ noremap <silent> <leader>w :w<CR>
 noremap <leader>q :Sayonara<CR>
 noremap <leader>Q :q!<CR>
 
-"auto-close breackets with Å
-imap Å <Plug>(pairify-complete)
-
-" map Enter to : (command)
-noremap <Enter> :
-
 " delete line with capital D instead of dd
 nnoremap D dd
 nnoremap dd D
 
-" Toggle comment with <leader>c (and s)
-nmap <leader>c gccg;
-vmap <leader>c gcg;
+" Toggle comment with s
 nmap s gcc
 vmap s gcgv
 
@@ -131,8 +121,8 @@ map H _
 map L $
 
 " CMD+S to save in iTerm2
-nnoremap <silent><F6> :w<CR>
-inoremap <silent><F6> <Esc>:w<CR>
+nnoremap <silent><F6> :silent :w<CR>
+inoremap <silent><F6> :silent <Esc>:w<CR>
 
 " Save with <leader>w
 noremap <leader>w :w<CR>
@@ -149,7 +139,7 @@ let g:gruvbox_invert_selection=0
 
 " Use <backspace> to delete in insert mode
 set backspace=indent,eol,start
-noremap <BS> x
+" noremap <BS> x
 
 " Use <Del> to delete forwards in insert mode
 inoremap <C-d> <Del>
@@ -322,6 +312,6 @@ map <Leader>m <C-c><C-c>
 map <Enter> <C-c><C-c>
 noremap <silent> <C-k> :IPythonCellClear<CR>
 noremap <silent> <Leader>k :IPythonCellClear<CR>
-noremap <silent> <Leader>v viw<C-c><C-c>
+map <C-v> _viw<C-c><C-c>
 
-let g:kite_snippets=0
+nmap æ <Plug>(AerojumpSpace)

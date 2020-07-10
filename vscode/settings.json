@@ -19,11 +19,11 @@
     },
     {
         "before": ["J"],
-        "after": ["}"]
+         "after": ["j", "}", "k", "0"]
     },
     {
         "before": ["K"],
-        "after": ["{"]
+        "after": ["k", "{", "j", "0"]
     },
     {
         "before": ["H"],
@@ -57,15 +57,17 @@
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": ["J"],
-            "after": ["}"]
+            "after": ["j", "}", "k", "0"]
         },
         {
             "before": ["K"],
-            "after": ["{"]
+            "after": ["k", "{", "j", "0"]
         },
         {
             "before": ["H"],
-            "after": ["_"]
+            "commands": [
+                "cursorLineStart"
+            ],
         },
         {
             "before": ["L"],
