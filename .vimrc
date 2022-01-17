@@ -10,41 +10,62 @@ colorscheme gruvbox
 set background=dark
 " set termguicolors " Enable true colors support
 
-call plug#begin()
+call plug#begin('~/.config/nvim/plugged')
+" ----------------------------------------------
+" Fundamentals
+" ----------------------------------------------
 Plug 'morhetz/gruvbox' " Primary color scheme
-Plug 'easymotion/vim-easymotion' " move lines by reference
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim' " Vim functionality to FZF
+Plug 'edix0009/vim-sayonara' " Quit vim when last buffer is closed
+Plug 'deathlyfrantic/vim-buftabline', { 'branch': 'experimental-config-function' }
+Plug 'romainl/vim-cool' " Stop matching after search is done.
+Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
+Plug 'mg979/vim-visual-multi' " multiple cursors
+
+" Build the extra binary if cargo exists on your system.
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+
+" ----------------------------------------------
+" Language support 
+" ----------------------------------------------
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript' " JS support
+Plug 'mxw/vim-jsx' " JSX support
+Plug 'ap/vim-css-color' " #HEX color in CSS
+Plug 'mattn/emmet-vim' " HTML auto-complete
+" ----------------------------------------------
+" Text Editing 
+" ----------------------------------------------
 Plug 'rhysd/clever-f.vim' " use f as repeat instead of , ;
 Plug 'wellle/targets.vim' " e.g. ci( outsode of actual text object
-Plug 'terryma/vim-multiple-cursors' " adds VS Code like CMD+D to <C-n>  
 Plug 'tpope/vim-commentary' " cg to comment/uncomment visual block
 Plug 'tpope/vim-surround' " use S' in visual block
 Plug 'briandoll/change-inside-surroundings.vim' " Common 'change in <surrounding>'
 Plug 'machakann/vim-highlightedyank' " Highlight yanked region
-Plug '/usr/local/opt/fzf' " FZF fuzzy finder
-Plug 'junegunn/fzf.vim' " Vim functionality to FZF
-Plug 'edix0009/vim-sayonara' " Quit vim when last buffer is closed
-Plug 'tmsvg/pear-tree' " Auto-close breackets
-Plug 'deathlyfrantic/vim-buftabline', { 'branch': 'experimental-config-function' }
-Plug 'jpalardy/vim-slime', { 'for': 'python' }
+" Plug 'tmsvg/pear-tree' " Auto-close breackets
+" ----------------------------------------------
+" REPL 
+" ----------------------------------------------
+Plug 'jpalardy/vim-slime'
 Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
-Plug 'romainl/vim-cool' " Stop matching after search is done.
-Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
-Plug 'psliwka/vim-smoothie'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'mg979/vim-visual-multi' " multiple cursors
-Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+" ----------------------------------------------
+" MISC
+" ----------------------------------------------
+" Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'glepnir/dashboard-nvim'
+" ----------------------------------------------
 call plug#end()
 
-let g:deoplete#enable_at_startup = 1
+" Break lines are words
+set linebreak
+
+noremap j gj
+noremap k gk
 
 " Center screen around current cursor position
 noremap Z zz
 
-" Indentation
-set smartindent
-
-" Rename current TMUX tab to current file
-autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 set title
 
 " improved search
@@ -118,7 +139,7 @@ vmap s gcgv
 
 " go to begining and end of line with H and L
 map H _
-map L $
+map L $h
 
 " CMD+S to save in iTerm2
 nnoremap <silent><F6> :silent :w<CR>
@@ -195,13 +216,12 @@ vnoremap . :normal .<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
+" " show existing tab with 4 spaces width
+" set tabstop=4
+" " when indenting with '>', use 4 spaces width
+" set shiftwidth=4
+" " On pressing tab, insert 4 spaces
+" set expandtab
 
 nnoremap gV `[v`]
 
@@ -310,8 +330,23 @@ let slime_default_config = {
 let slime_dont_ask_default = 1
 map <Leader>m <C-c><C-c>
 map <Enter> <C-c><C-c>
-noremap <silent> <C-k> :IPythonCellClear<CR>
-noremap <silent> <Leader>k :IPythonCellClear<CR>
-map <C-v> _viw<C-c><C-c>
+noremap <silent> <C-k> :SlimeSend1 %clear<CR>
+noremap <silent> <Leader>k :SlimeSend1 %clear<CR>
+map <C-v> mq_viw<C-c><C-c>`q
 
-nmap æ <Plug>(AerojumpSpace)
+nmap <leader>o :CocCommand explorer<CR>
+
+" indentation
+filetype plugin indent on
+set expandtab       " use spaces instead of tabs
+set autoindent      " autoindent based on line above, works most of the time
+set smartindent     " smarter indent for C-like languages
+set shiftwidth=2    " when reading, tabs are 4 spaces
+set softtabstop=2   " in insert mode, tabs are 4 spaces
+
+function! ReloadBrowser()
+  write
+  silent !osascript ~/Dropbox/Scripts/refresh-chrome.applescript
+endfunction
+nnoremap <silent> <leader>i :call ReloadBrowser()<CR>
+

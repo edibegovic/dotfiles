@@ -12,16 +12,17 @@ hs.notify.new({title="Hammerspoon", informativeText="Config loaded"}):send()
 hs.window.animationDuration = 0
 
 local applicationHotkeys = {
-  c = 'Google Chrome',
+  c = 'Firefox',
   s = 'Spotify',
-  e = 'Evernote',
-  g = 'GitKraken',
+  e = 'Bear',
+  g = 'GSE SMART IPTV',
   i = 'iTerm2',
   t = 'iTerm2',
-  w = 'Wire',
+  w = 'Messenger',
   a = 'Finder',
   v = 'Code',
   p = 'Preview',
+  z = 'zoom.us',
   q = 'NaN'
 }
 
@@ -44,7 +45,7 @@ hs.hotkey.bind(hyper, "+", function()
   bindAAppHotkey('q', window.frontmostWindow():application():name())
 end)
 
-hs.hotkey.bind(hyper, "return", function()
-  hs.application.launchOrFocus('Evernote')
-  hs.eventtap.keyStroke("cmd", "j")
-end)
+-- hs.hotkey.bind(hyper, "return", function()
+--   hs.application.launchOrFocus('Evernote')
+--   hs.eventtap.keyStroke("cmd", "j")
+-- end)

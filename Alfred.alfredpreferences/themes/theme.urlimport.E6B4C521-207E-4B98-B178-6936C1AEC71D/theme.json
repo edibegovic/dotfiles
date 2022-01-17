@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 8,
+      "subtext" : {
+        "size" : 11,
+        "colorSelected" : "#000000FF",
+        "font" : "System",
+        "color" : "#5E5E5EFF"
+      },
+      "shortcut" : {
+        "size" : 20,
+        "colorSelected" : "#999999FF",
+        "font" : "System",
+        "color" : "#3F3F3FFF"
+      },
+      "backgroundSelected" : "#FEFFFFFF",
+      "text" : {
+        "size" : 25,
+        "colorSelected" : "#000000FF",
+        "font" : "System",
+        "color" : "#5E5E5EFF"
+      },
+      "iconPaddingHorizontal" : 5,
+      "paddingVertical" : 8,
+      "iconSize" : 40
+    },
+    "search" : {
+      "paddingVertical" : 2,
+      "background" : "#FFFFFFFF",
+      "spacing" : 10,
+      "text" : {
+        "size" : 36,
+        "colorSelected" : "#000000FF",
+        "font" : "System",
+        "color" : "#000000FF"
+      },
+      "backgroundSelected" : "#B5D5FFFF"
+    },
+    "window" : {
+      "color" : "#FFFFFFFF",
+      "paddingHorizontal" : 11,
+      "width" : 680,
+      "borderPadding" : 10,
+      "borderColor" : "#19191900",
+      "blur" : 0,
+      "roundness" : 10,
+      "paddingVertical" : 10
+    },
+    "credit" : "Nikita Voloboev",
+    "separator" : {
+      "color" : "#FFFFFFFF",
+      "thickness" : 1
+    },
+    "scrollbar" : {
+      "color" : "#3A3A3AFF",
+      "thickness" : 2
+    },
+    "name" : "Mono Light"
+  }
+}
