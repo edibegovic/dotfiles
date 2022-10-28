@@ -1,0 +1,44 @@
+{
+	"name": "Vimium C",
+	"@time": "11/08/2022, 15:55:57",
+	"time": 1660226157085,
+	"environment": {
+		"extension": "1.99.0",
+		"platform": "mac",
+		"chromium": "104"
+	},
+	"filterLinkHints": true,
+	"grabBackFocus": true,
+	"keyLayout": 4,
+	"keyMappings": [
+		"#!no-check",
+		"map j scrollPxDown count=500",
+		"map k scrollPxUp count=500",
+		"map J goBack",
+		"map K goForward",
+		"map h previousTab",
+		"map l nextTab",
+		"map H moveTabLeft",
+		"map L moveTabRight",
+		"map < moveTabLeft",
+		"map > moveTabRight",
+		"map i removeTab",
+		"map I restoreTab",
+		"map <g-ø> visitPreviousTab",
+		"map r LinkHints.activateSelect",
+		"map e enterFindMode",
+		""
+	],
+	"searchEngines": "bi: https://cn.bing.com/search?q=$s",
+	"userDefinedCss": [
+		"/* find */",
+		"div.R.HM > span.LH.MH {    ",
+		"    background: linear-gradient(#FF8484,#FF4545);",
+		"    border-radius: 3px;",
+		"    border: 1px solid #E0222D;",
+		"    color: white;",
+		"}",
+		""
+	],
+	"vimSync": true
+}
