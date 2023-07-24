@@ -1,14 +1,9 @@
-
 " Reload eonfiguration with :so %
+" -or simply use <leader>s
 
 " Set leader to <space>
 nnoremap <SPACE> <Nop>
 let mapleader = "\<Space>"
-
-" ~~~aestethics~~~ 
-colorscheme gruvbox
-set background=dark
-" set termguicolors " Enable true colors support
 
 call plug#begin('~/.config/nvim/plugged')
 " ----------------------------------------------
@@ -16,34 +11,32 @@ call plug#begin('~/.config/nvim/plugged')
 " ----------------------------------------------
 Plug 'morhetz/gruvbox' " Primary color scheme
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim' " Vim functionality to FZF
+Plug 'junegunn/fzf.vim'
 Plug 'edix0009/vim-sayonara' " Quit vim when last buffer is closed
 Plug 'deathlyfrantic/vim-buftabline', { 'branch': 'experimental-config-function' }
-Plug 'romainl/vim-cool' " Stop matching after search is done.
-Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
+" Plug 'romainl/vim-cool' " Stop matching after search is done.
+" Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
 Plug 'mg979/vim-visual-multi' " multiple cursors
-
-" Build the extra binary if cargo exists on your system.
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-
+" Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+" Plug 'ggandor/leap.nvim' " Type few letters to jump (kinda like search - see github)
 " ----------------------------------------------
 " Language support 
 " ----------------------------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript' " JS support
-Plug 'mxw/vim-jsx' " JSX support
-Plug 'ap/vim-css-color' " #HEX color in CSS
 Plug 'mattn/emmet-vim' " HTML auto-complete
+" Plug 'pangloss/vim-javascript' " JS support
+" Plug 'mxw/vim-jsx' " JSX support
 " ----------------------------------------------
 " Text Editing 
 " ----------------------------------------------
-Plug 'rhysd/clever-f.vim' " use f as repeat instead of , ;
+Plug 'tpope/vim-repeat' " Use . to repeat complex commands
+" Plug 'rhysd/clever-f.vim' " use f as repeat instead of , ;
 Plug 'wellle/targets.vim' " e.g. ci( outsode of actual text object
 Plug 'tpope/vim-commentary' " cg to comment/uncomment visual block
 Plug 'tpope/vim-surround' " use S' in visual block
 Plug 'briandoll/change-inside-surroundings.vim' " Common 'change in <surrounding>'
 Plug 'machakann/vim-highlightedyank' " Highlight yanked region
-" Plug 'tmsvg/pear-tree' " Auto-close breackets
+Plug 'tmsvg/pear-tree' " Auto-close breackets
 " ----------------------------------------------
 " REPL 
 " ----------------------------------------------
@@ -53,9 +46,14 @@ Plug 'hanschen/vim-ipython-cell', { 'for': 'python' }
 " MISC
 " ----------------------------------------------
 " Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'glepnir/dashboard-nvim'
+Plug 'tpope/vim-fugitive'
 " ----------------------------------------------
 call plug#end()
+
+" ~~~aestethics~~~ 
+colorscheme gruvbox
+set background=dark
+" set termguicolors " Enable true colors support
 
 " Break lines are words
 set linebreak
@@ -63,13 +61,26 @@ set linebreak
 noremap j gj
 noremap k gk
 
+" Half-page scroll to 6 line scroll
+noremap <c-d> 6<c-e>
+noremap <c-u> 6<c-y>
+
 " Center screen around current cursor position
 noremap Z zz
 
 set title
 
 " improved search
-map /  <Plug>(incsearch-forward)
+" map /  <Plug>(incsearch-forward)
+set incsearch
+
+" Remap search
+map <leader>j /
+noremap f /
+noremap F ?
+
+" No search highlight
+set nohlsearch
 
 map <c-b> ``
 noremap gb ``
@@ -101,9 +112,16 @@ set splitbelow
 set splitright
 
 " use TAB and Enter for coc autocomplte
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" use Enter/<CR> for coc select
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " FZF should use dropbox as main inoREDIRECT_URIex
 map <c-space> :FZF<cr>
@@ -142,8 +160,8 @@ map H _
 map L $h
 
 " CMD+S to save in iTerm2
-nnoremap <silent><F6> :silent :w<CR>
-inoremap <silent><F6> :silent <Esc>:w<CR>
+nnoremap <silent> <F6> :w<CR>
+inoremap <silent> <F6> <Esc>:w<CR>
 
 " Save with <leader>w
 noremap <leader>w :w<CR>
@@ -193,10 +211,6 @@ set laststatus=2
 set noshowmode
 autocmd StdinReadPre * let s:std_in=1
 
-" Remap search
-map <leader>j /
-map <leader>k ?
-
 " No delay on escape
 set timeoutlen=1000 ttimeoutlen=0
 
@@ -243,8 +257,8 @@ if has('mouse')
   set mouse=a
 endif
 
-" No search highlight
-set nohlsearch
+" Don't yank on paste in visual mode
+xnoremap p pgvy
 
 " No annoying sound on errors
 set noerrorbells
@@ -254,6 +268,7 @@ set tm=500
 
 " Access vimrc with <leader>e
 map <leader>e :e! ~/.vimrc<cr>
+map <leader>s :source ~/.vimrc<cr>
 
  " highlight duration of yanks
 let g:highlightedyank_highlight_duration = 80
@@ -276,32 +291,24 @@ let g:fzf_colors = {
 
 " Lets you move the tail of a selection (visual mode) by holding down control
 function! DreamyMoveVisualTail(movement) abort
-    let tail_pos = getpos('v')
-    let tail_line_num = tail_pos[1]
-    let tail_column_num = tail_pos[2]
-    execute "normal! \<esc>"
-    let start_pos = getpos("'<")
-    let end_pos = getpos("'>")
-    let end_line_num = end_pos[1]
-    let end_column_num = end_pos[2]
-    if tail_line_num != end_line_num || tail_column_num != end_column_num
-        let head_pos = end_pos
-    else
-        let head_pos = start_pos
-    endif
-    call setpos('.', tail_pos)
-    execute 'normal ' . a:movement
-    normal! v
-    call setpos('.', head_pos)
+  let tail_pos = getpos('v')
+  let tail_line_num = tail_pos[1]
+  let tail_column_num = tail_pos[2]
+  execute "normal! \<esc>"
+  let start_pos = getpos("'<")
+  let end_pos = getpos("'>")
+  let end_line_num = end_pos[1]
+  let end_column_num = end_pos[2]
+  if tail_line_num != end_line_num || tail_column_num != end_column_num
+    let head_pos = end_pos
+  else
+    let head_pos = start_pos
+  endif
+  call setpos('.', tail_pos)
+  execute 'normal ' . a:movement
+  normal! v
+  call setpos('.', head_pos)
 endfunction
-
-vnoremap <C-h> <Cmd>call DreamyMoveVisualTail('h')<CR>
-vnoremap <C-l> <Cmd>call DreamyMoveVisualTail('l')<CR>
-vnoremap <C-b> <Cmd>call DreamyMoveVisualTail('b')<CR>
-vnoremap <C-w> <Cmd>call DreamyMoveVisualTail('w')<CR>
-vnoremap <C-e> <Cmd>call DreamyMoveVisualTail('e')<CR>
-vnoremap <C-j> <Cmd>call DreamyMoveVisualTail('j')<CR>
-vnoremap <C-k> <Cmd>call DreamyMoveVisualTail('k')<CR>
 
 " Move between splits ("windows") with CTRL-<HJKL>
 nnoremap <C-J> <C-W><C-J>
@@ -309,7 +316,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Ignore the stupid command window (and Ex)
+" Ignore q command window (and Ex)
 nnoremap q: <Nop>
 nnoremap Q <nop>
 
@@ -325,11 +332,11 @@ hi VertSplit guifg=#FF5C8F
 let slime_target = 'tmux'
 let slime_python_ipython = 1
 let slime_default_config = {
-            \ 'socket_name': get(split($TMUX, ','), 0),
-            \ 'target_pane': '{top-right}' }
+      \ 'socket_name': get(split($TMUX, ','), 0),
+      \ 'target_pane': '{top-right}' }
 let slime_dont_ask_default = 1
 map <Leader>m <C-c><C-c>
-map <Enter> <C-c><C-c>
+autocmd FileType python map <Enter> <C-c><C-c>
 noremap <silent> <C-k> :SlimeSend1 %clear<CR>
 noremap <silent> <Leader>k :SlimeSend1 %clear<CR>
 map <C-v> mq_viw<C-c><C-c>`q
@@ -350,3 +357,6 @@ function! ReloadBrowser()
 endfunction
 nnoremap <silent> <leader>i :call ReloadBrowser()<CR>
 
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+
+nnoremap <silent> å :set scrolloff=0<CR>VHoL<Esc>:set scrolloff=1<CR>``<C-y>/\%V

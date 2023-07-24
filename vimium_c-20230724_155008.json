@@ -1,0 +1,93 @@
+{
+	"name": "Vimium C",
+	"@time": "24/07/2023, 15:50:08",
+	"time": 1690206608126,
+	"environment": {
+		"extension": "1.99.994",
+		"platform": "mac",
+		"chromium": 115
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "j k ",
+			"pattern": ":https://www.google.com/"
+		},
+		{
+			"passKeys": "0 1 2 3 4 5 6 7 8 9 ",
+			"pattern": ":https://www.youtube.com/"
+		},
+		{
+			"passKeys": "0 1 2 3 4 5 6 7 8 9 ",
+			"pattern": ":https://soundcloud.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://online.tipp10.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://game.play-cs.com/"
+		}
+	],
+	"filterLinkHints": true,
+	"grabBackFocus": true,
+	"keyLayout": 12,
+	"keyMappings": [
+		"#!no-check",
+		"unmapAll",
+		"map f LinkHints.activate",
+		"map F LinkHints.activateOpenInNewTab",
+		"map gg scrollToTop",
+		"map G scrollToBottom",
+		"map <c-j> scrollPxDown count=100",
+		"map <c-k> scrollPxUp count=100",
+		"map j scrollPxDown count=500",
+		"map k scrollPxUp count=500",
+		"map J goBack",
+		"map K goForward",
+		"map h previousTab",
+		"map l nextTab",
+		"map H moveTabLeft",
+		"map L moveTabRight",
+		"map < moveTabLeft",
+		"map > moveTabRight",
+		"map i removeTab",
+		"map I restoreTab",
+		"map <g-ø> visitPreviousTab",
+		"map r LinkHints.activateSelect",
+		"map e enterFindMode",
+		"map n performFind",
+		"map N performBackwardsFind",
+		"map gd closeDownloadBar",
+		"map v enterVisualMode",
+		"map V enterVisualLineMode",
+		"map y autoCopy + reset",
+		"map u focusInput",
+		""
+	],
+	"scrollStepSize": 300,
+	"searchEngines": "bi: https://cn.bing.com/search?q=$s",
+	"userDefinedCss": [
+		"/* find */",
+		"div.R.HM > span.LH.MH {    ",
+		"    background: linear-gradient(#FF8484,#FF4545);",
+		"    border-radius: 3px;",
+		"    border: 1px solid #E0222D;",
+		"    color: white;",
+		"}",
+		"",
+		".IH {",
+		"    background:#f55656;",
+		"    border-color:#ff6363;",
+		"    opacity: 60%;",
+		"}",
+		"",
+		".IHS {",
+		"    background:#56f5a0;",
+		"    border-color:#7affb8;",
+		"}",
+		""
+	],
+	"vimSync": true,
+	"ignoreKeyboardLayout": 1
+}

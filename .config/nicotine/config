@@ -1,0 +1,246 @@
+[server]
+server = ('server.slsknet.org', 2242)
+login = testeny02
+passw = 123456789
+interface = 
+ctcpmsgs = False
+autosearch = []
+autoreply = 
+portrange = (2234, 2239)
+upnp = True
+upnp_interval = 4
+auto_connect_startup = True
+userlist = []
+banlist = []
+ignorelist = []
+ipignorelist = {}
+ipblocklist = {}
+autojoin = ['nicotine']
+autoaway = 15
+away = False
+private_chatrooms = False
+command_aliases = {}
+
+[transfers]
+incompletedir = /Users/edibegovic/.local/share/nicotine/incomplete
+downloaddir = /Users/edibegovic/Dropbox/Music
+uploaddir = /Users/edibegovic/.local/share/nicotine/received
+usernamesubfolders = False
+shared = [('likes', '/Users/edibegovic/Dropbox/Soundcloud/likes')]
+buddyshared = []
+uploadbandwidth = 50
+uselimit = False
+usealtlimits = False
+uploadlimit = 1000
+uploadlimitalt = 100
+downloadlimit = 0
+downloadlimitalt = 100
+preferfriends = False
+useupslots = False
+uploadslots = 2
+afterfinish = 
+afterfolder = 
+lock = True
+reverseorder = False
+fifoqueue = False
+usecustomban = False
+limitby = True
+customban = Banned, don't bother retrying
+usecustomgeoblock = False
+customgeoblock = Sorry, your country is blocked
+queuelimit = 10000
+filelimit = 100
+buddysharestrustedonly = False
+friendsnolimits = False
+groupdownloads = ungrouped
+groupuploads = folder_grouping
+geoblock = False
+geoblockcc = ['']
+remotedownloads = True
+uploadallowed = 2
+autoclear_downloads = False
+autoclear_uploads = False
+uploadsinsubdirs = True
+rescanonstartup = True
+enablefilters = False
+downloadregexp = (\\(.*\.url|albumart(_{........-....-....-....-............}_)?(_?(large|small))?\.jpg|desktop\.ini|folder\.jpg|thumbs\.db)$)
+downloadfilters = [['desktop.ini', 1], ['folder.jpg', 1], ['*.url', 1], ['thumbs.db', 1], ['albumart(_{........-....-....-....-............}_)?(_?(large|small))?\\.jpg', 0]]
+download_doubleclick = 2
+upload_doubleclick = 2
+downloadsexpanded = True
+uploadsexpanded = True
+
+[userinfo]
+descr = ''
+pic = 
+
+[userbrowse]
+expand_folders = True
+
+[words]
+censored = []
+autoreplaced = {'teh ': 'the ', 'taht ': 'that ', 'tihng': 'thing', 'youre': "you're", 'jsut': 'just', 'thier': 'their', 'tihs': 'this'}
+censorfill = *
+censorwords = False
+replacewords = False
+tab = True
+cycle = False
+dropdown = False
+characters = 3
+roomnames = False
+buddies = True
+roomusers = True
+commands = True
+aliases = True
+onematch = False
+
+[logging]
+debug = False
+debugmodes = []
+debuglogsdir = /Users/edibegovic/.local/share/nicotine/logs/debug
+logcollapsed = True
+transferslogsdir = /Users/edibegovic/.local/share/nicotine/logs/transfers
+rooms_timestamp = %H:%M:%S
+private_timestamp = %Y-%m-%d %H:%M:%S
+log_timestamp = %Y-%m-%d %H:%M:%S
+privatechat = True
+chatrooms = True
+transfers = False
+debug_file_output = False
+roomlogsdir = /Users/edibegovic/.local/share/nicotine/logs/rooms
+privatelogsdir = /Users/edibegovic/.local/share/nicotine/logs/private
+readroomlogs = True
+readroomlines = 15
+readprivatelines = 15
+rooms = ['nicotine']
+
+[privatechat]
+store = True
+users = ['Bun_It_Ranks']
+
+[columns]
+file_search = {'id': {'visible': True, 'width': 50}, 'user': {'visible': True, 'width': 70}, 'country': {'visible': True, 'width': 25}, 'filename': {'visible': True, 'width': 417}, 'speed': {'visible': False, 'width': 60}, 'in_queue': {'visible': False, 'width': 20}, 'folder': {'visible': True, 'width': 374}, 'size': {'visible': True, 'width': 100}, 'bitrate': {'visible': True, 'width': 100}, 'length': {'visible': True, 'width': 92}}
+download = {'user': {'visible': True, 'width': 200}, 'path': {'visible': True, 'width': 400}, 'filename': {'visible': True, 'width': 400}, 'status': {'visible': True, 'width': 140}, 'queue_position': {'visible': True, 'width': 90}, 'percent': {'visible': True, 'width': 90}, 'size': {'visible': True, 'width': 180}, 'speed': {'visible': True, 'width': 100}, 'time_elapsed': {'visible': True, 'width': 140}, 'time_left': {'visible': True, 'width': 85}}
+upload = {}
+user_browse = {'filename': {'visible': True, 'width': 600}, 'size': {'visible': True, 'width': 100}, 'bitrate': {'visible': True, 'width': 100}, 'length': {'visible': True, 'width': 71}}
+buddy_list = {}
+chat_room = {'nicotine': {}}
+
+[searches]
+expand_searches = True
+group_searches = ungrouped
+maxresults = 150
+enable_history = True
+history = ['ticketmaster', 'ryanair', 'job application', 'cover letter', 'ansøgning', 'so ein ding', 'MGP 2013', 'MGP', 'lightning fire magic prayer', 'joe moe', 'jeo moe', 'the neighbourhood softcore', 'softcore the', 'tiktok', 'anna david f k', 'anna david fuck', 'anna david duck', 'anna david', 'Lightning fire magic prayer', 'live fra bremen', 'ringtone', 'ringetone', 'ringetoner', 'ringetonger', 'ringtoner', 'nik jay', 'I love ya nik jay', 'DR p3', 'air marcus', 'JOEY MOE', 'Dobbeltslag', 'DOBBELTSLAG', 'gummibåd', 'røde gummibåd', 'kap slap spring', 'spring break mix kap', 'zero 7 today', 'zero7', 'mostar', 'FMLYBND Letting Go', 'pendulum celldweller', 'pendulum']
+enablefilters = False
+filters_visible = True
+defilter = ['', '', '', '', 0, '']
+filtercc = []
+filterin = []
+filterout = []
+filtersize = ['>80', '>10MiB']
+filterbr = []
+filtertype = ['pdf', '.mp4']
+search_results = True
+max_displayed_results = 1500
+min_search_chars = 3
+remove_special_chars = True
+private_search_results = True
+
+[ui]
+dark_mode = False
+header_bar = False
+icontheme = 
+chatme = #908e8b
+chatremote = 
+chatlocal = 
+chathilite = #5288ce
+urlcolor = #5288ce
+useronline = #16bb5c
+useraway = #c9ae13
+useroffline = #e04f5e
+usernamehotspots = True
+usernamestyle = bold
+textbg = 
+search = 
+searchq = GREY
+inputcolor = 
+spellcheck = True
+exitdialog = 0
+tab_default = 
+tab_hilite = #497ec2
+tab_changed = #497ec2
+tab_select_previous = True
+tabmain = Top
+tabrooms = Top
+tabprivate = Top
+tabinfo = Top
+tabbrowse = Top
+tabsearch = Top
+tab_status_icons = True
+globalfont = 
+chatfont = 
+tabclosers = True
+searchfont = 
+listfont = 
+browserfont = 
+transfersfont = 
+last_tab_id = downloads
+modes_visible = {'search': True, 'downloads': True, 'uploads': True, 'userbrowse': True, 'userinfo': True, 'private': True, 'chatrooms': True, 'interests': True, 'userlist': True}
+modes_order = ['search', 'downloads', 'uploads', 'userbrowse', 'userinfo', 'private', 'userlist', 'chatrooms', 'interests']
+buddylistinchatrooms = tab
+trayicon = True
+startup_hidden = False
+filemanager = 
+speechenabled = False
+speechprivate = User %(user)s told you: %(message)s
+speechrooms = In room %(room)s, user %(user)s said: %(message)s
+speechcommand = flite -t $
+width = 800
+height = 600
+xposition = -1
+yposition = -1
+maximized = True
+urgencyhint = True
+file_path_tooltips = True
+reverse_file_paths = True
+
+[private_rooms]
+rooms = {}
+
+[urls]
+protocols = {}
+
+[interests]
+likes = []
+dislikes = []
+
+[players]
+default = 
+npothercommand = 
+npplayer = lastfm
+npformatlist = []
+npformat = $n
+
+[notifications]
+notification_window_title = True
+notification_tab_colors = False
+notification_popup_sound = False
+notification_popup_file = True
+notification_popup_folder = True
+notification_popup_private_message = True
+notification_popup_chatroom = False
+notification_popup_chatroom_mention = True
+
+[plugins]
+enable = True
+enabled = []
+
+[statistics]
+started_downloads = 28
+completed_downloads = 28
+downloaded_size = 608417032
+started_uploads = 1
+completed_uploads = 1
+uploaded_size = 2964112
+

@@ -1,91 +1,184 @@
 {
-"workbench.colorTheme": "Atom One Dark",
-"tabout.disableByDefault": true,
-"vim.useSystemClipboard": true,
-"window.zoomLevel": 0,
-"vim.leader": "<space>",
-"vim.sneak": true,
-"vim.easymotion": true,
-"vim.ignorecase": true,
-"vim.sneakUseIgnorecaseAndSmartcase": true,
-"vim.normalModeKeyBindingsNonRecursive": [
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "breadcrumbs.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "python.dataScience.sendSelectionToInteractiveWindow": true,
+  "tabout.disableByDefault": true,
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "vim.easymotion": true,
+  "vim.ignorecase": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
     {
-        "before": ["¨"],
-        "after": ["/"]
+      "after": [
+        "/"
+      ],
+      "before": [
+        "¨"
+      ]
     },
     {
-        "before": ["'"],
-        "after": ["`"]
+      "after": [
+        "`"
+      ],
+      "before": [
+        "'"
+      ]
     },
     {
-        "before": ["J"],
-         "after": ["j", "}", "k", "0"]
+      "after": [
+        "j",
+        "}",
+        "k",
+        "0"
+      ],
+      "before": [
+        "J"
+      ]
     },
     {
-        "before": ["K"],
-        "after": ["k", "{", "j", "0"]
+      "after": [
+        "k",
+        "{",
+        "j",
+        "0"
+      ],
+      "before": [
+        "K"
+      ]
     },
     {
-        "before": ["H"],
-            "after": ["_"]
-        },
-        {
-            "before": ["L"],
-            "after": ["$"]
-        },
-        {
-            "before": ["D"],
-            "after": ["d","d"]
-        },
-        {
-            "before": ["d","d"],
-            "after": ["D"]
-        },
-        {
-            "before": [","],
-            "after": [";"]
-        },
-        {
-            "before": [";"],
-            "after": [","]
-        },
-        {
-            "before": ["s"],
-            "commands": ["editor.action.commentLine"]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": ["J"],
-            "after": ["j", "}", "k", "0"]
-        },
-        {
-            "before": ["K"],
-            "after": ["k", "{", "j", "0"]
-        },
-        {
-            "before": ["H"],
-            "commands": [
-                "cursorLineStart"
-            ],
-        },
-        {
-            "before": ["L"],
-            "after": ["$"]
-        },
-        {
-            "before": ["."],
-            "commands": [":normal .<CR>"]
-        },
-        {
-            "before": ["s"],
-            "commands": ["editor.action.commentLine"]
-        }
-    ],
-    "latex-workshop.view.pdf.viewer": "tab",
-    "breadcrumbs.enabled": true,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "after": [
+        "_"
+      ],
+      "before": [
+        "H"
+      ]
     },
-    "python.dataScience.sendSelectionToInteractiveWindow": true,
+    {
+      "after": [
+        "$"
+      ],
+      "before": [
+        "L"
+      ]
+    },
+    {
+      "after": [
+        "d",
+        "d"
+      ],
+      "before": [
+        "D"
+      ]
+    },
+    {
+      "after": [
+        "D"
+      ],
+      "before": [
+        "d",
+        "d"
+      ]
+    },
+    {
+      "after": [
+        ";"
+      ],
+      "before": [
+        ","
+      ]
+    },
+    {
+      "after": [
+        ","
+      ],
+      "before": [
+        ";"
+      ]
+    },
+    {
+      "before": [
+        "s"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    }
+  ],
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  "vim.useSystemClipboard": true,
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "j",
+        "}",
+        "k",
+        "0"
+      ],
+      "before": [
+        "J"
+      ]
+    },
+    {
+      "after": [
+        "k",
+        "{",
+        "j",
+        "0"
+      ],
+      "before": [
+        "K"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "commands": [
+        "cursorLineStart"
+      ]
+    },
+    {
+      "after": [
+        "$"
+      ],
+      "before": [
+        "L"
+      ]
+    },
+    {
+      "before": [
+        "."
+      ],
+      "commands": [
+        ":normal .<CR>"
+      ]
+    },
+    {
+      "before": [
+        "s"
+      ],
+      "commands": [
+        "editor.action.commentLine"
+      ]
+    }
+  ],
+  "workbench.colorTheme": "Atom One Dark",
+  "[latex]": {
+    "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "on"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cmake.configureOnOpen": true,
+  "debug.onTaskErrors": "debugAnyway",
+  "latex-workshop.kpsewhich.enabled": true
 }
