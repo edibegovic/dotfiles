@@ -79,6 +79,36 @@ if GetKeyState("shift") = 1
 else Send, ^{Right} 
 return
 
+; Switch between open windows of current app
+; --------------------------------------------------------------------
+Windows(Direction)
+{
+	static total, hWnds, last := ""
+
+	a := WinExist("A")
+	WinGetClass wClass
+	WinGet exe, ProcessName
+	if (exe != last) {
+		last := exe
+		hWnds := []
+		DetectHiddenWindows Off
+		WinGet wList, List, % "ahk_exe" exe " ahk_class" wClass
+		loop % wList {
+			hWnd := wList%A_Index%
+			hWnds.Push(hWnd)
+		}
+		total := hWnds.Count()
+	}
+	for i,hWnd in hWnds {
+		if (a = hWnd)
+			break
+	}
+	i += Direction
+	i := i > total ? 1 : i = 0 ? total : i
+	WinActivate % "ahk_id" hWnds[i]
+}
+
+!<::Windows(+1)
 
 ; Function to toggle the focus of a program
 ; --------------------------------------------------------------------
@@ -117,6 +147,9 @@ CapsLock & Return::Send, !{Space}:o
 ;---------------------------------------------------------------------
 !q::WinClose A
 !h::WinMinimize A
+
+; Right click menu
+RAlt::AppsKey
 
 ; media controls
 ;---------------------------------------------------------------------
