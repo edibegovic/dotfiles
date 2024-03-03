@@ -1,0 +1,12 @@
+\.git$
+windows
+vscode
+misc
+\.DS_Store
+\.cvim
+vimium_c.*
+iTerm2_.*
+.*iterm2\.plist
+.*\.bttpreset
+.*\.png$
+cask-apps\.txt

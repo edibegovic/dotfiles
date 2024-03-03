@@ -19,18 +19,15 @@ alias h="howdoi"
 alias o="open ."
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 
-# Copilot CLI
-eval "$(github-copilot-cli alias -- "$0")"
- 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # Vi-mode
-source ~/antigen.zsh
-antigen bundle jeffreytse/zsh-vi-mode
-antigen bundle pip
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
+# source ~/antigen.zsh
+# antigen bundle jeffreytse/zsh-vi-mode
+# antigen bundle pip
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen apply
 
 # Only auto-complete paths
 zstyle :completion::complete:-command-:: tag-order local-directories -
@@ -80,13 +77,22 @@ export PATH=$(pyenv root)/shims:$PATH
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/edibegovic/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/edibegovic/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/edibegovic/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/edibegovic/google-cloud-sdk/completion.zsh.inc'; fi
-eval "$(atuin init zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/edibegovic/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/edibegovic/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/edibegovic/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/edibegovic/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
