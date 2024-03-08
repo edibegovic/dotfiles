@@ -20,7 +20,9 @@ return {
         dotfiles = true,
       },
     })
+   
+  -- map c-n to toggle nvim-tree
+  vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
   end,
 }
-
 
