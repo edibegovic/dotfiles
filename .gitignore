@@ -2,3 +2,8 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# App specific files
+*/raycast
+*/github-copilot
+
