@@ -89,7 +89,26 @@ vim.keymap.set('n', 'D', 'dd')
 vim.keymap.set('n', 'dd', 'D')
 
 -- Smart-quit vim (and save)
-vim.keymap.set('n', '<leader>q', ':confirm q<CR>')
+--vim.keymap.set('n', '<leader>q', ':confirm q<CR>')
+vim.keymap.set('n', '<leader>q', ':confirm :bp<bar>sp<bar>bn<bar>bd<CR>')
+
+-- Function to close the current buffer and try to preserve the window layout
+local function smart_buffer_close()
+  local buflisted = vim.fn.getbufinfo({buflisted = 1})
+  if #buflisted > 1 then
+    -- Switch to the previous buffer
+    vim.cmd('bprevious')
+    -- Delete the alternate buffer (which is the one we were originally on)
+    vim.cmd('confirm bd#')
+  else
+    -- If it's the last buffer, just delete it
+    vim.cmd('confirm bd')
+  end
+end
+
+-- Setting up the keymapping in normal mode 
+vim.keymap.set('n', '<leader>q', smart_buffer_close, {desc = "Smart close buffer"})
+
 
 -- Use æ to acess command mode
 -- vim.keymap.set('n', 'æ', ':')
@@ -124,6 +143,10 @@ vim.keymap.set('n', "\'", '`^')
 -- Repeat . command over multiple visual lines
 vim.keymap.set('v', '.', ':norm.<CR>')
 
+-- Use tab to switch buffers
+vim.keymap.set('n', '<Tab>', ':bnext<CR>')
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>')
+
 -- Use tab in indent visual selection
 vim.keymap.set('v', '<Tab>', '>gv')
 vim.keymap.set('v', '<S-Tab>', '<gv')
@@ -135,7 +158,6 @@ vim.keymap.set({'n', 'v'}, 'x', '"_x')
 vim.keymap.set('v', 'p', '"_dP')
 
 -- File explorer with <leader>e
-vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
 vim.keymap.set('n', '<leader>s', ':so<CR>')
 
 -- scroll 4 lines with ctrl + u/d
@@ -148,3 +170,9 @@ vim.keymap.set('n', 'x', '"_x')
 -- emit holding down shift for charecter text objects
 vim.keymap.set('n', 'vi2', 'vi"')
 vim.keymap.set('n', 'yi2', 'yi"')
+
+--  Use <C-hjkl> to move between panes
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
