@@ -89,7 +89,6 @@ vim.keymap.set('n', 'D', 'dd')
 vim.keymap.set('n', 'dd', 'D')
 
 -- Smart-quit vim (and save)
---vim.keymap.set('n', '<leader>q', ':confirm q<CR>')
 vim.keymap.set('n', '<leader>q', ':confirm :bp<bar>sp<bar>bn<bar>bd<CR>')
 
 -- Function to close the current buffer and try to preserve the window layout
@@ -174,5 +173,3 @@ vim.keymap.set('n', 'yi2', 'yi"')
 --  Use <C-hjkl> to move between panes
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
