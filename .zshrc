@@ -5,7 +5,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 alias v="nvim"
-# alias i="IPython"
+alias python="$(pyenv which python)"
+alias pip="$(pyenv which pip)"
 alias i="python -m IPython"
 alias w="curl wttr.in"
 alias c="clear"
