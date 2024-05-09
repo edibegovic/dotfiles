@@ -19,4 +19,17 @@ vim.opt.rtp:prepend(lazypath)
 -- Config plugins
 -- ---------------------------------
 
-require("lazy").setup('edi.plugins')
+-- require("lazy").setup('edi.plugins')
+
+require("lazy").setup({
+	spec = {
+		{ import = "edi.plugins" },
+	},
+	ui = {
+		border = "rounded",
+	},
+	change_detection = {
+		enabled = true,
+		notify = false, 
+	},
+})

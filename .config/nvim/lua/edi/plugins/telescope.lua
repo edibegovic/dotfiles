@@ -2,22 +2,30 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  -- Smart open Plugin
-  {
-    "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
-    config = function()
-      require("telescope").load_extension("smart_open")
-      vim.keymap.set("n", "<c-f>", function ()
-        require("telescope").extensions.smart_open.smart_open()
-      end, { noremap = true, silent = true })
-    end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      -- Only required if using match_algorithm fzf
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    dependencies = { 
+      'nvim-lua/plenary.nvim',
+      {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
     },
-  }
+    -- map c-f to find_files and leader-leader to commands
+    config = function()
+      local telescope = require('telescope')
+      local actions = require('telescope.actions')
+
+      telescope.setup {
+        defaults = {
+          path_display = { 'smart' },
+          mappings = {
+            i = {
+              ['<esc>'] = actions.close,
+            },
+          },
+        },
+      }
+
+      require('telescope').load_extension('fzf')
+
+      vim.keymap.set('n', '<c-f>', '<cmd>Telescope find_files<cr>')
+      vim.keymap.set('n', '<leader><leader>', '<cmd>Telescope<cr>')
+    end
+  },
 }
