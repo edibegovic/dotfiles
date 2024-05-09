@@ -31,7 +31,8 @@ local applicationHotkeys = {
   z = 'zoom.us',
   q = 'Signal',
   r = 'Safari',
-}
+  ['1'] = '1Password'
+ }
 
 function bindAAppHotkey(key, appName)
   hs.hotkey.bind(hyper, key, function()
