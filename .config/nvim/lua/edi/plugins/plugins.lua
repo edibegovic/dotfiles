@@ -13,10 +13,11 @@ return {
 config = function()
   vim.g.highlightedyank_highlight_duration = 100
 end
-  },
-  { 'petertriho/nvim-scrollbar',
+},
+{ 'petertriho/nvim-scrollbar',
   config = function()
     require('scrollbar').setup()
   end
 },
+{ 'stevearc/dressing.nvim' },
 }

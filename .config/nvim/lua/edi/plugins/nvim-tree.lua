@@ -24,7 +24,7 @@ return {
 
     vim.opt.termguicolors = true
     require("nvim-tree").setup({
-  on_attach = custom_keymaps,
+      on_attach = custom_keymaps,
       view = {
         width = 30,
       },
@@ -35,11 +35,25 @@ return {
         dotfiles = true,
       },
     })
-   
-  -- map c-n to toggle nvim-tree
-  vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
-  -- nmap <leader>e to toggle focus on nvim-tree
-  vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+    -- map c-n to toggle nvim-tree
+    vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+
+    -- nmap <leader>e to toggle focus on nvim-tree
+    vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+
+
+    -- ------------------------------
+    -- Auto close
+    -- ------------------------------
+    vim.api.nvim_create_autocmd("BufEnter", {
+      nested = true,
+      callback = function()
+        if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
+          vim.cmd "quit"
+        end
+      end
+    })
   end,
 }
+

@@ -11,13 +11,16 @@ vim.opt.linebreak = true
 -- No search highlight
 vim.opt.hlsearch = false
 
+-- Enable full color
+vim.opt.termguicolors = true
+
 -- Ignore case
 vim.opt.ignorecase = true
 
 -- Use <backspace> to delete in insert mode
 vim.opt.backspace = "indent,eol,start"
 
---  Use <Del> to delete forwards in insert mode
+--  Use <Del> to delete forwards in insert mode 
 vim.keymap.set("i", "<C-d>", "<Del>")
 
 -- set title of terminal window to current file
@@ -89,9 +92,6 @@ vim.keymap.set('n', 'D', 'dd')
 vim.keymap.set('n', 'dd', 'D')
 
 -- Smart-quit vim (and save)
-vim.keymap.set('n', '<leader>q', ':confirm :bp<bar>sp<bar>bn<bar>bd<CR>')
-
--- Function to close the current buffer and try to preserve the window layout
 local function smart_buffer_close()
   local buflisted = vim.fn.getbufinfo({buflisted = 1})
   if #buflisted > 1 then
@@ -102,11 +102,17 @@ local function smart_buffer_close()
   else
     -- If it's the last buffer, just delete it
     vim.cmd('confirm bd')
+    -- and quit
+    vim.cmd('q')
   end
 end
 
 -- Setting up the keymapping in normal mode 
 vim.keymap.set('n', '<leader>q', smart_buffer_close, {desc = "Smart close buffer"})
+vim.keymap.set('n', 'Q', smart_buffer_close, {desc = "Smart close buffer"})
+
+-- quit all
+vim.keymap.set('n', '<leader>Q', ':qa!<CR>')
 
 
 -- Use æ to acess command mode
@@ -173,3 +179,10 @@ vim.keymap.set('n', 'yi2', 'yi"')
 --  Use <C-hjkl> to move between panes
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
+-- cim.keymap.set('n', '<C-k>', '<C-w>k')
+-- vim.keymap.set('n', '<C-l>', '<C-w>l')
+
+-- turn on mouse support
+vim.opt.mouse = 'a'
+
+
