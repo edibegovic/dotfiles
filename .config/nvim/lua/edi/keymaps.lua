@@ -14,6 +14,9 @@ vim.opt.hlsearch = false
 -- Enable full color
 vim.opt.termguicolors = true
 
+-- turn on mouse support
+vim.opt.mouse = 'a'
+
 -- Ignore case
 vim.opt.ignorecase = true
 
@@ -182,7 +185,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 -- cim.keymap.set('n', '<C-k>', '<C-w>k')
 -- vim.keymap.set('n', '<C-l>', '<C-w>l')
 
--- turn on mouse support
-vim.opt.mouse = 'a'
-
+-- toggles
+vim.keymap.set('n', '<leader>tw', ':set wrap!<CR>')
+vim.keymap.set('n', '<leader>tln', ':set number!<CR>')
 
