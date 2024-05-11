@@ -20,6 +20,9 @@ vim.opt.mouse = 'a'
 -- Ignore case
 vim.opt.ignorecase = true
 
+-- Presistent undo
+vim.opt.undofile = true
+
 -- Use <backspace> to delete in insert mode
 vim.opt.backspace = "indent,eol,start"
 
@@ -48,9 +51,6 @@ vim.opt.visualbell = false
 
 -- shortmess, don't show save confirmation
 vim.opt.shortmess:append('c')
-
--- Yank into system clipboard
--- vim.opt.clipboard:append('unnamedplus')
 
 -- Add cursor line
 vim.opt.cursorline = true
@@ -122,7 +122,7 @@ vim.keymap.set('n', '<leader>Q', ':qa!<CR>')
 -- vim.keymap.set('n', 'æ', ':')
 
 -- Yank to system clipboard
-vim.keymap.set('v', 'Y', '"*y')
+vim.keymap.set({'v', 'n'}, 'Y', '"*y')
 
 -- Save with CMD + S
 vim.keymap.set('n', '<leader>w', ':w<CR>', {silent=true})
