@@ -23,6 +23,9 @@ vim.opt.ignorecase = true
 -- Presistent undo
 vim.opt.undofile = true
 
+-- Don't continue comments when pressing enter
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+
 -- Use <backspace> to delete in insert mode
 vim.opt.backspace = "indent,eol,start"
 
