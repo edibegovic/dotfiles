@@ -7,6 +7,10 @@ local function custom_keymaps(bufnr)
   -- custom mappings
   vim.keymap.del('n', 'f', { buffer = bufnr })
   vim.keymap.del('n', 'F', { buffer = bufnr })
+
+  -- set hovering folder as current directory
+  vim.keymap.set('n', '<leader>cd', function() require("nvim-tree.api").tree.change_root_to_node() end, { buffer = bufnr })
+
 end
 
 -- ------------------------------
@@ -26,7 +30,7 @@ return {
     require("nvim-tree").setup({
       on_attach = custom_keymaps,
       view = {
-        width = 30,
+        width = 38,
       },
       renderer = {
         group_empty = true,
