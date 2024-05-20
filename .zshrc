@@ -43,8 +43,6 @@ export ZSH="/Users/edibegovic/.oh-my-zsh"
 export FZF_DEFAULT_OPTS='--height=70% --preview="cat {}" --preview-window=right:60%:wrap'
 export FZF_DEFAULT_COMMAND='rg --files'
 
-export OPENAI_API_KEY="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"
-
 # Install (one or multiple) selected applications
 # using "brew search" as source input
 # mnemonic [B]rew [I]nstall [P]lugin
