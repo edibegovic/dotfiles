@@ -44,6 +44,10 @@ vim.opt.splitright = true
 
 -- Auto-loads buffer contents if changes are made outside of Vim
 vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
 
 -- Don't show current mode
 vim.cmd "set noshowmode"

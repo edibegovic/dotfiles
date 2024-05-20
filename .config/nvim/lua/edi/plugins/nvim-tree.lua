@@ -1,3 +1,9 @@
+local function open_tab_silent(node)
+  local nt_api = require("nvim-tree.api")
+  nt_api.node.open.edit(node)
+  nt_api.tree.focus()
+end
+
 local function custom_keymaps(bufnr)
   local api = require "nvim-tree.api"
 
@@ -9,7 +15,7 @@ local function custom_keymaps(bufnr)
   vim.keymap.del('n', 'F', { buffer = bufnr })
 
   -- set hovering folder as current directory
-  vim.keymap.set('n', '<leader>cd', function() require("nvim-tree.api").tree.change_root_to_node() end, { buffer = bufnr })
+  vim.keymap.set('n', '<leader>cd', function() api.tree.change_root_to_node() end, { buffer = bufnr })
 
 end
 
