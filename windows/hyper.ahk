@@ -22,6 +22,38 @@ return
 ; ---------------------------------------------------------------------
 CapsLock::Send, {ESC}
 
+
+; Mac keyboard compatibility
+; ---------------------------------------------------------------------
+; LAlt::LWin
+; LWin::Lalt
+
+; left Windows + tab: Alt + tab
+; ---------------------------------------------------------------------
+LWin & Tab::AltTab
+
+; PrintScreen (on Thinkpad) to right click
+; ---------------------------------------------------------------------
+SC137::AppsKey
+
+; Auto-reload script with right
+RControl::Reload
+
+; Fix backslash
+;FLIP 029 and 056 (½ - <)
+; ---------------------------------------------------------------------
+SC029::SC056
+SC056::SC029
+
+; Curly brackets { }
+; ---------------------------------------------------------------------
+!+8:: Send, {{} 
+!+9:: Send, {}}
+
+; Backslash
+; ---------------------------------------------------------------------
+!+7:: Send, \
+
 ; Cursor movement
 ; --------------------------------------------------------------------
 CapsLock & h::                                                       
@@ -79,36 +111,39 @@ if GetKeyState("shift") = 1
 else Send, ^{Right} 
 return
 
-; Switch between open windows of current app
+
+; !SC029::Windows(+1)
+
+; Switch between instances of the current ToggleApp
 ; --------------------------------------------------------------------
-Windows(Direction)
-{
-	static total, hWnds, last := ""
-
-	a := WinExist("A")
-	WinGetClass wClass
-	WinGet exe, ProcessName
-	if (exe != last) {
-		last := exe
-		hWnds := []
-		DetectHiddenWindows Off
-		WinGet wList, List, % "ahk_exe" exe " ahk_class" wClass
-		loop % wList {
-			hWnd := wList%A_Index%
-			hWnds.Push(hWnd)
-		}
-		total := hWnds.Count()
-	}
-	for i,hWnd in hWnds {
-		if (a = hWnd)
-			break
-	}
-	i += Direction
-	i := i > total ? 1 : i = 0 ? total : i
-	WinActivate % "ahk_id" hWnds[i]
+ExtractAppTitle(FullTitle)
+{	
+	AppTitle := SubStr(FullTitle, InStr(FullTitle, " ", false, -1) + 1)
+	Return AppTitle
 }
+; !`::
+!SC056:: ; Ctrl+Alt+L hotkey
+    WinGet, ActiveProcess, ProcessName, A
+    WinGet, OpenWindowsAmount, Count, ahk_exe %ActiveProcess%
 
-!<::Windows(+1)
+    If OpenWindowsAmount = 1  ; If only one Window exist, do nothing
+        Return
+        
+    Else
+        {
+            WinGetTitle, FullTitle, A
+            AppTitle := ExtractAppTitle(FullTitle)
+
+            SetTitleMatchMode, 2		
+            WinGet, WindowsWithSameTitleList, List, %AppTitle%
+            
+            If WindowsWithSameTitleList > 1 ; If several Window of same type (title checking) exist
+            {
+                WinActivate, % "ahk_id " WindowsWithSameTitleList%WindowsWithSameTitleList%	; Activate next Window	
+            }
+        }
+    Return
+
 
 ; Function to toggle the focus of a program
 ; --------------------------------------------------------------------
@@ -124,19 +159,24 @@ ToggleApp(AppName, AppPath) {
     }
 }
 
+
 ; Hyper App Launcher
 ;---------------------------------------------------------------------
 CapsLock & v::ToggleApp("Code.exe", "C:\program files\Microsoft VS Code\Code.exe")
 CapsLock & c::ToggleApp("Firefox.exe", "C:\Program Files\Mozilla Firefox\firefox.exe")
 CapsLock & t::ToggleApp("WindowsTerminal.exe", "C:\Users\edbe\AppData\Local\Microsoft\WindowsApps\wt.exe")
 CapsLock & a::GroupActivate, explorer
-CapsLock & q::ToggleApp("Teams.exe", "C:\Users\edbe\AppData\Local\Microsoft\Teams\Update.exe --processStart Teams.exe")
+CapsLock & q::ToggleApp("ms-teams.exe", "C:\Program Files\WindowsApps\MSTeams_24004.1309.2689.2246_x64__8wekyb3d8bbwe\ms-teams.exe")
 CapsLock & m::GroupActivate, outlook
 CapsLock & e::ToggleApp("ONENOTE.EXE", "C:\Program Files\Microsoft Office\root\Office16\ONENOTE.EXE")
-CapsLock & x::ToggleApp("nvim-qt.exe", "C:\Program Files\Neovim\bin\nvim-qt.exe")
-CapsLock & g::ToggleApp("gitkraken.exe", "C:\Users\edbe\AppData\Local\gitkraken\gitkraken.exe")
+CapsLock & x::ToggleApp("neovide.exe", "C:\Users\edbe\scoop\apps\neovide\current\neovide.exe")
+CapsLock & g::ToggleApp("GitHubDesktop.exe", "C:\Users\edbe\AppData\Local\GitHubDesktop\GitHubDesktop.exe")
 ; CapsLock & r::ToggleApp("PAMAutomation", "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -Command &{Import-Module PAMAutomation; Start-PAMRDP}")
 CapsLock & r::ToggleApp("mstsc.exe", "C:\Windows\System32\mstsc.exe")
+
+CapsLock & 1::ToggleApp("1Password.exe", "C:\Users\edbe\AppData\Local\1Password\app\8\1Password.exe")
+CapsLock & s::ToggleApp("Spotify.exe", "C:\Users\edbe\AppData\Roaming\Spotify\Spotify.exe")
+CapsLock & w::ToggleApp("WINWORD.EXE", "C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE")
 
 ; open powertoys run (alt+space) and search for files (?)
 CapsLock & f::Send, !{Space}?
@@ -153,10 +193,10 @@ RAlt::AppsKey
 
 ; media controls
 ;---------------------------------------------------------------------
-CapsLock & F1:: Send, {Volume_Mute}
-CapsLock & F2:: Send, {Volume_Down}
-CapsLock & F3:: Send, {Volume_Up}
-CapsLock & F4:: Send, {Media_Play_Pause}
-CapsLock & F5:: Send, {Media_Next}
-CapsLock & F6:: Send, {Media_Stop}
+F13::Media_Prev
+F14::Media_Play_Pause
+F15::Media_Next
+
+F18::Send {Volume_Down}
+F19::Send {Volume_Up}
 
