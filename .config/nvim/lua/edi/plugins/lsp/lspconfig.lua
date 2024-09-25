@@ -48,6 +48,15 @@ return {
 						}),
 					},
 				})
+				lspconfig["lua_ls"].setup({
+					settings = {
+						Lua = {
+							diagnostics = {
+								disable = { "missing-fields" },
+							},
+						},
+					},
+				})
 			end,
 		})
 	end,
