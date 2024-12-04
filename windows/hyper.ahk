@@ -25,14 +25,14 @@ CapsLock::Send, {ESC}
 
 ; Mac keyboard compatibility
 ; ---------------------------------------------------------------------
-; LAlt::LWin
-; LWin::Lalt
+LAlt::LWin
+LWin::Lalt
 
 ; left Windows + tab: Alt + tab
 ; ---------------------------------------------------------------------
-LWin & Tab::AltTab
+; LWin & Tab::AltTab
 
-; PrintScreen (on Thinkpad) to right click
+; PrintScreen (on Thinkpad) to right clickf
 ; ---------------------------------------------------------------------
 SC137::AppsKey
 
@@ -53,6 +53,10 @@ SC056::SC029
 ; Backslash
 ; ---------------------------------------------------------------------
 !+7:: Send, \
+
+; pipe |
+; ---------------------------------------------------------------------
+!+6:: Send, |
 
 ; Cursor movement
 ; --------------------------------------------------------------------
@@ -121,7 +125,8 @@ ExtractAppTitle(FullTitle)
 	AppTitle := SubStr(FullTitle, InStr(FullTitle, " ", false, -1) + 1)
 	Return AppTitle
 }
-; !`::
+
+; Toggle between windows of the same application
 !SC056:: ; Ctrl+Alt+L hotkey
     WinGet, ActiveProcess, ProcessName, A
     WinGet, OpenWindowsAmount, Count, ahk_exe %ActiveProcess%
@@ -169,8 +174,8 @@ CapsLock & a::GroupActivate, explorer
 CapsLock & q::ToggleApp("ms-teams.exe", "C:\Program Files\WindowsApps\MSTeams_24004.1309.2689.2246_x64__8wekyb3d8bbwe\ms-teams.exe")
 CapsLock & m::GroupActivate, outlook
 CapsLock & e::ToggleApp("ONENOTE.EXE", "C:\Program Files\Microsoft Office\root\Office16\ONENOTE.EXE")
-CapsLock & x::ToggleApp("neovide.exe", "C:\Users\edbe\scoop\apps\neovide\current\neovide.exe")
-CapsLock & g::ToggleApp("GitHubDesktop.exe", "C:\Users\edbe\AppData\Local\GitHubDesktop\GitHubDesktop.exe")
+CapsLock & x::ToggleApp("neovide.exe", "C:\Users\edbe\Downloads\neovide.exe")
+CapsLock & g::ToggleApp("gitkraken.exe", "C:\Users\edbe\AppData\Local\gitkraken\gitkraken.exe")
 ; CapsLock & r::ToggleApp("PAMAutomation", "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -Command &{Import-Module PAMAutomation; Start-PAMRDP}")
 CapsLock & r::ToggleApp("mstsc.exe", "C:\Windows\System32\mstsc.exe")
 
@@ -199,4 +204,3 @@ F15::Media_Next
 
 F18::Send {Volume_Down}
 F19::Send {Volume_Up}
-
